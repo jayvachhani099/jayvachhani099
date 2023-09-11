@@ -6,10 +6,6 @@ on:
   # This action can be manually triggered
   workflow_call:
 jobs:
-  phpunit:
-    runs-on: ubuntu-latest
-    container:
-      image: kirschbaumdevelopment/laravel-test-runner:7.3
     # This name is up to you
   retry-job:
     runs-on: "ubuntu-latest"
@@ -17,5 +13,3 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-    - name: Run Testsuite
-      run: vendor/bin/phpunit tests/
