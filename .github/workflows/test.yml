@@ -1,18 +1,19 @@
-name: Deploy Workflow
-on: [push, workflow_dispatch]
+
+name: "Retry action using retry step"
+on:
+  # This action is called when this is pushed to github
+  push:
+  # This action can be manually triggered
+  workflow_call:
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Get Code
+    # This name is up to you
+  retry-job:
+    runs-on: "ubuntu-latest"
+    name: My Job
+    steps:
+      - name: Checkout repository
         uses: actions/checkout@v3
-        - name: Install Nodejs
-        uses: actions/setup-node@v3
-        with:
-            node-version: '10.19.0'
-        - name: Install dependencies
-        run: npm ci
-        - name: Build Project
-        run: npm run build
-        - name: deploy
-        run: echo "Deploying..."
+
+      - name: Print
+        run: |
+        echo 'Hello'
