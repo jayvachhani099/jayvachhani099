@@ -7,7 +7,8 @@ on:
   workflow_call:
 jobs:
     # This name is up to you
-  retry-job:
+  retry-job
+  :
     runs-on: "ubuntu-latest"
     name: My Job
     steps:
