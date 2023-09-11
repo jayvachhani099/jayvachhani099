@@ -1,20 +1,25 @@
+on: push
+name: Deploy to Heroku
 jobs:
-  build_and_test:
-    name: Build and test
+  release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-
-      - name: Install NPM dependencies
-        run: npm ci
-
-      - name: Build assets
-        run: npm run production
-
-      - name: Install Composer dependencies
-        run: composer install --no-interaction --no-progress --prefer-dist
-
-      - name: Run PHP tests
-        run: vendor/bin/phpunit --stop-on-error --stop-on-failure
+    - uses: actions/checkout@master
+    - name: login
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:login
+    - name: push
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:push -a calm-fortress-1234 web
+    - name: release
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:release -a calm-fortress-1234 web
