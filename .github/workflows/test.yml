@@ -6,9 +6,12 @@ on:
   # This action can be manually triggered
   workflow_call:
 jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    container:
+      image: kirschbaumdevelopment/laravel-test-runner:7.3
     # This name is up to you
-  retry-job
-  :
+  retry-job:
     runs-on: "ubuntu-latest"
     name: My Job
     steps:
