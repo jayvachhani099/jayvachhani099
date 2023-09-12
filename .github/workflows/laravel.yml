@@ -28,10 +28,10 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+        echo "$API_KEY"
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
-      run: |
-         echo "$API_KEY"
+
