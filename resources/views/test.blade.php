@@ -1,5 +1,3 @@
 <h1>Hello Demo Tesrsdxdsdx</h1>
 <h3>Hello</h3>
-
-
-<h6>New code with test</h6>
+<h1>New Code</h1>
